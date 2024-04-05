@@ -1,4 +1,9 @@
-export const SearchBar = () => {
+interface searchBarProps {
+    isStockToggleOn: boolean
+    handleClickToggle: React.MouseEventHandler<HTMLInputElement>;
+}
+
+export const SearchBar = ({ isStockToggleOn, handleClickToggle }: searchBarProps) => {
     return (
         <div className='flex flex-col align-middle justify-start items-start p-2 border-4 border-blue-400 w-full h-[17%] truncate '>
             <form className='flex flex-col gap-3 w-full  '>
@@ -7,7 +12,7 @@ export const SearchBar = () => {
                 </label>
 
                 <label className='truncate'>
-                    <input type='checkbox' /> Only show products in stock Only Show products in stock Only Show products in stock
+                    <input type='checkbox' onClick={handleClickToggle} defaultChecked={isStockToggleOn} /> Only show products in stock Only Show products in stock Only Show products in stock
                 </label>
             </form>
         </div>

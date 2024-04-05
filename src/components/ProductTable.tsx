@@ -3,17 +3,22 @@ import { ProductCategoryRow } from './ProductCategoryRow';
 import { ProductRow } from './ProductRow';
 
 interface ProductTableProps {
+    isStockToggleOn: boolean;
     products: { category: string; name: string; price: string; stocked: boolean }[];
 }
 
-export const ProductTable = ({ products }: ProductTableProps) => {
+export const ProductTable = ({ isStockToggleOn, products }: ProductTableProps) => {
     // console.log(products);
 
     const ProductCategoryRowArr: JSX.Element[] = [];
     let lastCategory: null | string;
 
+    if (isStockToggleOn) {
+        products = products.filter((product) => product.stocked);
+    }
+
     products.forEach((product) => {
-        console.log(product);
+        // console.log(product);
 
         if (product.category !== lastCategory) {
             ProductCategoryRowArr.push(<ProductCategoryRow category={product.category} key={product.category} />);

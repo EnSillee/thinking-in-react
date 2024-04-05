@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ProductTable } from '../components/ProductTable';
 import { SearchBar } from '../components/SearchBar';
 
@@ -6,12 +7,21 @@ interface ProductTableProps {
 }
 
 export const FilterableProductTable = ({ products }: ProductTableProps) => {
+
+    const [isStockToggleOn, setIsStockToggleOn] = useState(false)
+
+    const handleClickToggle = () => {
+        setIsStockToggleOn(toggleState => !toggleState)
+    }
+
+    console.log(isStockToggleOn)
+
     return (
         <div className='flex flex-col  w-full h-screen'>
             <div className='flex flex-col justify-center items-center m-4 h-[83%]'>
                 <div className='flex flex-col p-4 h-full w-full lg:w-[1008px] min-w-[260px] border-4 gap-2'>
-                    <SearchBar />
-                    <ProductTable products={products} />
+                    <SearchBar isStockToggleOn={isStockToggleOn} handleClickToggle={handleClickToggle} />
+                    <ProductTable isStockToggleOn={isStockToggleOn} products={products} />
                 </div>
             </div>
         </div>
