@@ -14,11 +14,11 @@ export const FilterableProductTable = ({ products }: ProductTableProps) => {
         setIsStockToggleOn(toggleState => !toggleState)
     }
 
-    console.log(isStockToggleOn)
+    // console.log(isStockToggleOn)
 
     return (
         <div className='flex flex-col  w-full h-screen'>
-            <div className='flex flex-col justify-center items-center m-4 h-[83%]'>
+            <div className='flex flex-col justify-center items-center m-4 h-[83%] sm:h-full'>
                 <div className='flex flex-col p-4 h-full w-full lg:w-[1008px] min-w-[260px] border-4 gap-2'>
                     <SearchBar isStockToggleOn={isStockToggleOn} handleClickToggle={handleClickToggle} />
                     <ProductTable isStockToggleOn={isStockToggleOn} products={products} />
