@@ -33,7 +33,7 @@ export const ProductTable = ({ isStockToggleOn, products }: ProductTableProps) =
     // console.log(ProductCategoryRowArr)
 
     return (
-        <table className='flex flex-col p-4 h-[83%] border-4 border-purple-800 gap-4 overflow-y-scroll '>
+        <table className='flex flex-col p-4 h-[83%] sm:h-full border-4 border-purple-800 gap-4 overflow-y-scroll  '>
             <thead className='flex text-xl'>
                 <tr className='flex w-full'>
                     <th className=' w-1/2 text-center font-bold'>Name</th>
