@@ -3,6 +3,7 @@ import { ProductCategoryRow } from './ProductCategoryRow';
 import { ProductRow } from './ProductRow';
 
 interface ProductTableProps {
+    filterText: string;
     isStockToggleOn: boolean;
     products: { category: string; name: string; price: string; stocked: boolean }[];
 }
