@@ -8,7 +8,7 @@ interface ProductTableProps {
     products: { category: string; name: string; price: string; stocked: boolean }[];
 }
 
-export const ProductTable = ({ isStockToggleOn, products }: ProductTableProps) => {
+export const ProductTable = ({ filterText, isStockToggleOn, products }: ProductTableProps) => {
     // console.log(products);
 
     const ProductCategoryRowArr: JSX.Element[] = [];
@@ -20,6 +20,16 @@ export const ProductTable = ({ isStockToggleOn, products }: ProductTableProps) =
 
     products.forEach((product) => {
         // console.log(product);
+
+        // 유저가 서치바에 입력한 filterText와 일치하는 상품만 남기도록하는 조건문
+        if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+            return;
+        }
+
+        // 재고가 남아있는 product가 아니라면 해당 product는 넘깁니다.
+        if (isStockToggleOn && !product.stocked) {
+            return;
+        }
 
         if (product.category !== lastCategory) {
             ProductCategoryRowArr.push(<ProductCategoryRow category={product.category} key={product.category} />);
